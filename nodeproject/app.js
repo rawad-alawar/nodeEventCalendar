@@ -12,7 +12,10 @@ app.set('view engine', 'ejs')
 
 app.get('/',function(req, res){
    // res.send("Aloha World")
-   res.render('index',{list: ['first val', 'second val', 'third val']})
+   res.render('index',{
+       list: ['first val', 'second val', 'third val'],
+       nav: ['Services','Portfolio','About','Team','Contact']
+   })
 })
 
 app.get('/routing',function(req, res){
