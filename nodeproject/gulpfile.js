@@ -1,5 +1,6 @@
 var gulp = require("gulp");
 var jshint = require("gulp-jshint");
+var nodemon = require("gulp-nodemon");
 
 //object that contains our js files
 var jsFiles = ['*.js','src/**/*.js'];
@@ -32,3 +33,17 @@ gulp.task('inject', function(){
         .pipe(inject(injectSrc, injectOptions))
         .pipe(gulp.dest('./src/views'));
 });
+
+//sets up nodemon so that the server will restart if their are any changes to our js files. Second argument tells gulp to run the 'style' and 'inect' tasks
+gulp.task('serve',['style','inject'], function(){
+    var options = {
+        script: 'app.js',
+        delayTime: 1,
+        watch: jsFiles
+    }
+    
+    return nodemon(options)
+        .on('restart', function(ev){
+            console.log("Restarting Server...")
+        })
+})
