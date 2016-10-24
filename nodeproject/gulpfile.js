@@ -2,7 +2,7 @@ var gulp = require("gulp");
 var jshint = require("gulp-jshint");
 var nodemon = require("gulp-nodemon");
 
-//object that contains our js files
+//arrayS that contains our js files
 var jsFiles = ['*.js','src/**/*.js'];
 
 //Checks style of our js code by passing it to jshint
@@ -34,7 +34,7 @@ gulp.task('inject', function(){
         .pipe(gulp.dest('./src/views'));
 });
 
-//sets up nodemon so that the server will restart if their are any changes to our js files. Second argument tells gulp to run the 'style' and 'inect' tasks
+//sets up nodemon so that the server will restart if their are any changes to our js files. Second argument tells gulp to run the 'style' and 'inejct' tasks
 gulp.task('serve',['style','inject'], function(){
     var options = {
         script: 'app.js',
@@ -46,4 +46,4 @@ gulp.task('serve',['style','inject'], function(){
         .on('restart', function(ev){
             console.log("Restarting Server...")
         })
-})
+}) 

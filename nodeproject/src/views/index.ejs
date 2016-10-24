@@ -20,7 +20,7 @@
     
     <!-- bower:js -->
     <script src="/jquery/dist/jquery.js"></script>
-    <script src="/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.js">//the bower_components folder is served as a static file, so we don't have to have bower_componenents at the front when we rout to bootstrap</script>
     <!-- endbower -->
     
     <!--inject:css -->
@@ -76,7 +76,7 @@
                     
                     <% for (var i = 0; i<nav.length; i++){ %>
                         <li>
-                            <a class = "page-scroll" href="#<%=nav[i] %>"> <%=nav[i]%></a>
+                            <a class = "page-scroll" href="#<%=nav[i].Link %>"> <%=nav[i].Text%></a>
                         </li>
                     <% } %>
                     
