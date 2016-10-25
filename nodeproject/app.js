@@ -2,7 +2,7 @@ var express = require("express");
 var app = express();
 
 var port = process.env.PORT
-var eventRouter = express.Router();
+var eventRouter = require('./src/routes/eventRoutes');
 
 app.use(express.static('public'));
 app.use(express.static('bower_components')) //Bower is a package manager for the web. We use bower to manage our front end assets. Bower can be installed with NPM. Bower downloads and manages updates like NPM. It is similar to NPM and Package.json
@@ -10,16 +10,7 @@ app.use(express.static('bower_components')) //Bower is a package manager for the
 app.set('views','./src/views')
 app.set('view engine', 'ejs')
 
-eventRouter.route('/')
-    .get(function(req,res){
-        res.send('Hello Events')
-    })
-    
-eventRouter.route('/event')
-    .get(function(req,res){
-        res.send('Hello Single Event')
-    })
-    
+
     
 app.use('/Events', eventRouter) //if user goes to '/Events', they are routed to eventRouter.route('/'). If user goes to '/Events/event', they are routed to eventRouter.route('/event')
 
